@@ -1,0 +1,47 @@
+<html>
+
+<head>
+      <link rel="stylesheet" href="mycss.css">
+
+</head>
+
+<body id="hpbackground" >
+      <div id="homepage">
+
+            <h1> HangLet </h1>
+      </div>
+            <div id="buttons">
+                  <input style="font-size:20px;width:200px;height:200px;background-color:#F6F909;" type="button" class = "button" id="“single”" name="“single”" value="SinglePlayer"
+                        onclick="homepageToSinglePlayer()" />
+
+                  <input style="font-size:20px;width:200px;height:200px;background-color:#F9A209;" type="button" class = "button1" id="“multi”" name="“multi”" value="Multiplayer"
+                        onclick="homepageToGetPlayersWords()" />
+            </div>
+			      <div class = "userNameClass" id="userName" >
+
+
+<!-- Script -->
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script> 
+
+<script>
+	var config = {
+    apiKey: "AIzaSyAFhZoGHpYmXbQSfKQ0Dm2CM4y3bl_QODU",
+    authDomain: "hanglet-48169.firebaseapp.com",
+    databaseURL: "https://hanglet-48169.firebaseio.com",
+    projectId: "hanglet-48169",
+    storageBucket: "",
+    messagingSenderId: "363620412655"
+  };
+  firebase.initializeApp(config);
+  //make auth and firestore references
+  const auth = firebase.auth();
+  
+</script>
+<!--Other Script  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./homepage.js"></script>			
+
+</body>
+
+</html>

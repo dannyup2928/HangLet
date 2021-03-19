@@ -1,0 +1,158 @@
+<html>
+
+<head> 
+<link rel="stylesheet" href="mycss.css">
+<link rel="stylesheet" href="getPlayersWord.css">
+<link href='https://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+<div id = "center">
+<h1> Multiplayer </h1>
+<div>
+    <ul id="events"></ul>
+</div>
+<div id="bigLoader" style="margin:0 auto;" >
+    <h3>Waiting for player...</h3>
+  <div id="loader" style="margin:0 auto;"  class="loader">
+  </div>
+</div>
+  <div id="versus">
+      <h3 id="showPlayersName"> </h3>
+  </div>
+  <div style="margin:35 auto; padding:0px;" id="miniloading">
+      <h5 style="margin:0 auto; padding:0px;" class="miniloader"></h5>
+</div>
+  
+
+  <div id="showHint">
+      <p id="showUserHint"> </p>
+  </div>
+<form id="playersWords" action="multiplayer.html" method = "GET" >
+  <fieldset>
+    <legend>Please insert your word and hint</legend>
+    <p id= "P1WORDS">
+      <label for="p1Words">Enter word</label> 
+      <input id="p1Words" name="p1Words" maxlength="10" />
+     
+    </p>
+    <p id= "hint">
+      <label for="hint">Hint</label> 
+      <input id="hint" name="hint" maxlength="20"/>
+      
+    </p>
+
+      <input type="button" id="“continue”" name="“continue”" value="Continue" onclick="continueToMultiplayer()" />
+
+  </fieldset>
+</form>
+</div>
+<!-- Game Over screen begin -->
+<div id="tudo">
+
+    <div class="gameover">
+    <p> GAME OVER</p>
+    </div>
+  
+    <div class="continue">
+        <p id="gameResult"> </p></br>  
+      <p> CONTINUE? </p> 
+      </div>
+  
+    <div class="opcoes">
+      <div class="yes"> <a href="getPlayersWords.html"> YES </a> </div>
+      <div class="no"> <a href="homepage.html"> NO </a> </div>
+    </div>
+  
+  </div>
+<!-- Game Over screen end -->
+
+<!-- Alphabet Begin-->
+<div style="margin:0 auto;" id = "gameArea">
+<div id="center">
+  <p class = "userNameClass" id = "userName"></p>
+<p class = "scoreClass" id = "score"></p>
+  
+  <!-- <button onclick="getPlayer1Word()">Display p2word(Start) </button> -->
+  
+  <p id = "p2WordsGenerated"></p>
+  <p id = "output"></p>
+
+  <div id = "blockContainer">
+  <div class="alphabet" id="block1">
+  <button id = "buttonA"  onclick="a()">a </button>
+  <button id = "buttonB"  onclick="b()">b </button>
+  <button id = "buttonC"  onclick="c()">c </button>
+  <button id = "buttonD"  onclick="d()">d </button>
+  <button id = "buttonE"  onclick="e()">e </button>
+  <button id = "buttonF"  onclick="f()">f </button>
+  <button id = "buttonG"  onclick="g()">g </button>
+  <button id = "buttonH"  onclick="h()">h </button>
+  <button id = "buttonI"  onclick="i()">i </button>
+  <button id = "buttonJ"  onclick="j()">j </button>
+  
+  <br></br>
+  
+  <button id = "buttonK"  onclick="k()">k </button>
+  <button id = "buttonL"  onclick="l()">l </button>
+  <button id = "buttonM"  onclick="m()">m </button>
+  <button id = "buttonN"  onclick="n()">n </button>
+  <button id = "buttonO"  onclick="o()">o </button>
+  <button id = "buttonP"  onclick="p()">p </button>
+  <button id = "buttonQ"  onclick="q()">q </button>
+  <button id = "buttonR"  onclick="r()">r </button>
+  <button id = "buttonSS"  onclick="s()">s </button>
+  
+  <br></br>
+  &ensp;
+  <button id = "buttonT"  onclick="t()">t </button>
+  <button id = "buttonU"  onclick="u()">u </button>
+  <button id = "buttonV"  onclick="v()">v </button>
+  <button id = "buttonW"  onclick="w()">w </button>
+  <button id = "buttonX"  onclick="x()">x </button>
+  <button id = "buttonY"  onclick="y()">y </button>
+  <button id = "buttonZ"  onclick="z()">z </button>
+  
+  </div>
+<!-- Alphabet End -->
+<!-- chatroom start -->
+      <!-- chatroom end -->
+    </div> 
+  </div>
+</div>
+<div class="navbar">
+  <a href="homepage.html">Homepage</a>
+  <a href="singleplayer.html" >SinglePlayer</a>
+  <a href="getPlayersWords.html" class="active" >Multiplayer</a>
+  <a href="highscore.html">High Score</a>
+  <a href="author.html">About us</a>
+  <a onclick="logout()">Logout</a>
+
+</div>
+
+<!-- Script -->
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script> 
+
+<script>
+	var config = {
+    apiKey: "AIzaSyAFhZoGHpYmXbQSfKQ0Dm2CM4y3bl_QODU",
+    authDomain: "hanglet-48169.firebaseapp.com",
+    databaseURL: "https://hanglet-48169.firebaseio.com",
+    projectId: "hanglet-48169",
+    storageBucket: "",
+    messagingSenderId: "363620412655"
+  };
+  firebase.initializeApp(config);
+  //make auth and firestore references
+  const auth = firebase.auth();
+  
+</script>
+<!--Other Script  -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./getPlayersWords.js"></script>
+
+</body>
+</html>

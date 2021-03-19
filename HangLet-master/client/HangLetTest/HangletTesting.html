@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HangLet Testing</title>
+  <script src="./hangLetTesting.js"></script>
+</head>
+
+<body>
+<h1>
+HangLet Tests
+</h1>
+<ul id="output"></ul>
+<script>
+var words = [
+
+"glossy",
+"birth",
+"elite",
+"racket",
+"challenge",
+"swim",
+"wont",
+"click",
+"victory",
+"fancy"
+
+]
+ wordsLength =0;
+ arrayOfAlpha =[];
+function newWords() {
+	
+  var randomNumber = Math.floor(Math.random() * (words.length));
+	document.getElementById('wordsGenerated').innerHTML = words[randomNumber];
+
+	wordsLength = words[randomNumber].length;
+	
+  //  var arrayOfAlpha = [];
+	while(wordsLength !=0)
+	{
+	 arrayOfAlpha.push("_ ");
+	wordsLength--;
+		
+	}
+}
+assert(wordsLength==arrayOfAlpha.length,"Single Player: Check if generated word length equal to the length of given characters.");
+</script>
+
+<script>
+p1Words="";
+p2Words="";
+words = [
+
+"glossy",
+"birth",
+"elite",
+"racket",
+"challenge",
+"swim",
+"wont",
+"click",
+"victory",
+"fancy"
+
+] 
+randomNumber = Math.floor(Math.random() * (words.length));
+ 
+function continueToMultiplayer() {
+	get2PlayersWords();
+}
+
+ p1Words = words[randomNumber];
+ p2Words = words[randomNumber];
+ 
+function get2PlayersWords() {
+	localStorage.setItem("p1WordsKey", p1Words);
+	localStorage.setItem("p2WordsKey", p2Words);
+}
+wordsLength=0;
+arrayOfAlpha=[];
+function p1GuessWords() {
+	var p2Words = localStorage.getItem("p1WordsKey");
+	 wordsLength = p2Words.length;
+
+	
+	while(wordsLength !=0)
+	{
+	 arrayOfAlpha.push("_ ");
+	wordsLength--;
+	}
+	return p2Words;
+}
+assert(wordsLength==arrayOfAlpha.length,"MultiPlayer: Player1: Check if generated word length equal to the length of given characters.");
+assert(p1GuessWords()==localStorage.getItem("p1WordsKey"),"MultiPlayer: Test localStorage & Check player1 hiden word.");
+
+wordsLength2=0;
+arrayOfAlpha2=[];
+function p2GuessWords() {
+		var p1Words = localStorage.getItem("p2WordsKey");
+	wordsLength2 = p2Words.length;
+
+	
+	while(wordsLength !=0)
+	{
+	 arrayOfAlpha2.push("_ ");
+	wordsLength--;
+	}
+	return p1Words
+}
+assert(wordsLength2==arrayOfAlpha2.length,"MultiPlayer: Player2: Check if generated word length equal to the length of given characters.");
+assert(p2GuessWords()==localStorage.getItem("p2WordsKey"),"MultiPlayer: Test localStorage & Check player2 hiden word.");
+</script>
+
+
+<!-- Script -->
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script> 
+
+<script>
+	var config = {
+    apiKey: "AIzaSyAFhZoGHpYmXbQSfKQ0Dm2CM4y3bl_QODU",
+    authDomain: "hanglet-48169.firebaseapp.com",
+    databaseURL: "https://hanglet-48169.firebaseio.com",
+    projectId: "hanglet-48169",
+    storageBucket: "",
+    messagingSenderId: "363620412655"
+  };
+  firebase.initializeApp(config);
+  //make auth and firestore references
+  const auth = firebase.auth();
+
+//listen for auth status changes
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+	// User is signed in.
+	assert(user.email=="obamendoutoume98@gmail.com","Check if a user is logged in from database.");
+    console.log("current user: "+user.email);
+  } else {
+	// No user is signed in.
+    console.log("no user: "+user);
+  }
+});  
+
+//login
+function login(email,password){ 
+ // sign up the user
+  auth.signInWithEmailAndPassword(email, password).then(cred => {
+	this.logout();
+    }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert("Err: "+errorMessage);
+    });
+}
+this.login("obamendoutoume98@gmail.com","123456");
+
+//logout
+//this.logout();
+function logout(){ 
+  auth.signOut().then((user) =>{
+	assert(user==null,"Check if a user is logged out.");
+console.log("log out");
+  });
+}
+
+//multiplayer & Single Player
+var score=10;
+var generatedWordClone="aaa";
+var currentPlayerWord ="aaa";
+function LoseCondition(currentScore) {
+	//if score is 0, you lose. Reset page
+	if(currentScore == 0) {
+	//	alert("YOU Got "+currentScore);
+		score=0;
+	//	sock.emit('playerScore',score);
+	} else if(generatedWordClone.length == 0) {
+		//alert("YOU Got "+currentScore);
+		score=currentScore;
+	//	sock.emit('playerScore',score);
+	}
+}
+function a(currentPlayerWord, letter) {
+	var i;
+	var success = false;
+	for (i = 0; i < currentPlayerWord.length; i++) {
+
+		if (currentPlayerWord[i] == letter) {
+			//remove letters from current word
+			generatedWordClone = generatedWordClone.replace(/a/g, "");
+			success = true;
+		}
+	}
+	if(success == false) {
+		score--;
+	}
+	LoseCondition(score);
+}
+a(currentPlayerWord,"q");//
+	assert(generatedWordClone.length==3,"If user enter wrong letter It Check if user has lost after the game.");
+	assert(score==9,"If user enter wrong letter, It take off one point from your score");
+	a(currentPlayerWord,"a");
+	assert(generatedWordClone.length==0,"Check If user enter correct letter");
+	assert(score==9,"Shouldn't take point off If user enter correct letter");
+
+var score2=10;
+var generatedWordClone2="abc";
+var currentPlayerWord2 ="abc";
+function LoseCondition2(currentScore) {
+	//if score is 0, you lose. Reset page
+	if(currentScore == 0) {
+	//	alert("YOU Got "+currentScore);
+		score2=0;
+	//	sock.emit('playerScore',score);
+	} else if(generatedWordClone2.length == 0) {
+		//alert("YOU Got "+currentScore);
+		score2=currentScore;
+	//	sock.emit('playerScore',score);
+	}
+}
+function checkLetter(currentPlayerWord2, letter) {
+	var i;
+	var success = false;
+	for (i = 0; i < currentPlayerWord2.length; i++) {
+
+		if (currentPlayerWord2[i] == letter) {
+			//remove letters from current word
+			generatedWordClone2 = generatedWordClone2.replace(/a/g, "");
+			success = true;
+		}
+	}
+	if(success == false) {
+		score2--;
+	}
+	LoseCondition2(score2);
+}
+function checkA(currentPlayerWord2) {
+	var i;
+	var success = false;
+	for (i = 0; i < currentPlayerWord2.length; i++) {
+
+		if (currentPlayerWord2[i] == "a") {
+			//remove letters from current word
+			generatedWordClone2 = generatedWordClone2.replace(/a/g, "");
+			success = true;
+		}
+	}
+	if(success == false) {
+		score2--;
+	}
+	LoseCondition2(score2);
+}
+function checkB(currentPlayerWord2) {
+	var i;
+	var success = false;
+	for (i = 0; i < currentPlayerWord2.length; i++) {
+
+		if (currentPlayerWord2[i] == "b") {
+			//remove letters from current word
+			generatedWordClone2 = generatedWordClone2.replace(/b/g, "");
+			success = true;
+		}
+	}
+	if(success == false) {
+		score2--;
+	}
+	LoseCondition2(score2);
+}
+function checkC(currentPlayerWord2) {
+	var i;
+	var success = false;
+	for (i = 0; i < currentPlayerWord2.length; i++) {
+
+		if (currentPlayerWord2[i] == "c") {
+			//remove letters from current word
+			generatedWordClone2 = generatedWordClone2.replace(/c/g, "");
+			success = true;
+		}
+	}
+	if(success == false) {
+		score2--;
+	}
+	LoseCondition2(score2);
+}
+checkLetter(currentPlayerWord2,"q");//
+	assert(generatedWordClone2.length==3,"If user enter wrong letter It Check if user has lost after the game with mix letters.");
+	assert(score2==9,"Take off one point from your score Test 2 with mix letters");
+	checkA(currentPlayerWord2,"a");
+	checkB(currentPlayerWord2,"b");
+	checkC(currentPlayerWord2,"c");
+	assert(generatedWordClone2.length==0,"Check If user enter correct letter with mix letters");
+	assert(score2==9,"Shouldn't take point off If user enter correct letter with mix letters");
+  
+</script>
+
+<!--Other Script  -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./hangLetTesting.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <meta charset="UTF-8">
+	  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+		<link rel="stylesheet" href="loginPage.css"> 
+</head>
+<body>
+	<div class = "section">
+<div class="loginForm">
+	<form id="userform">
+		<div id="box" class="box">
+			<h1>Welcome To HangLet!</h1>
+			<input type="email" id="email" placeholder="Email" name="email"  class="input" />
+			<input type="password" id="password" placeholder="Password" name="password" class="input" />  
+			<button class="btn" onclick="login()">Sign In</button> <!-- End Btn -->
+			<button id="btn2"  onclick="signUp()">Sign Up</button> <!-- End Btn2 -->
+		</div> <!-- End Box -->
+	</form>
+<p style="color:#000000;">Forgot your password? <a href="#" onclick="forgotPassword()" style="color:#f11e0f;">Click Here!</a> to reset.</p>
+<div id="snackbar">Welcome! You have signed up successfully.</div>
+
+</div>
+<div class="video-container">
+		<div class="color-overlay"></div>
+		<video autoplay loop muted id="myVideo">
+				<source src="isuTrim.mp4" type="video/mp4">
+Your browser does not support HTML5 video.
+		</video>
+</div>
+
+
+</div>
+<!-- Script -->
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script> 
+
+<script>
+	var config = {
+    apiKey: "AIzaSyAFhZoGHpYmXbQSfKQ0Dm2CM4y3bl_QODU",
+    authDomain: "hanglet-48169.firebaseapp.com",
+    databaseURL: "https://hanglet-48169.firebaseio.com",
+    projectId: "hanglet-48169",
+    storageBucket: "",
+    messagingSenderId: "363620412655"
+  };
+  firebase.initializeApp(config);
+  //make auth and firestore references
+  const auth = firebase.auth();
+  
+</script>
+<!--Other Script  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <script src="./loginPage.js"></script>
+
+</body>
+</html>

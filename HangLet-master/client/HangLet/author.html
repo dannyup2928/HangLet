@@ -1,0 +1,110 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="mycss.css">
+  <style>
+    p.bot {
+      margin: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper row2">
+    <div id="container" class="clear">
+
+      <div id="about-us" class="clear">
+        <!-- ####################################################################################################### -->
+        <section id="authorinfo" class="clear">
+          <p> This project was created during the Spring 2019 Semester at Iowa State University for SE 319.</p>
+        </section>
+        <!-- ####################################################################################################### -->
+        <section id="team">
+          <h2>About Us</h2>
+          <ul class="clear">
+            <li class="one_quarter first">
+              <figure><img src="Cobi.jpg" alt="">
+                <figcaption>
+                  <p class="team_name">Cobi Mom</p>
+                  <p class="team_title">Software Engineering</p>
+                  <p class="team_description">Cobi was born in Des Moines, Iowa. He is a 3rd year SE student at Iowa
+                    State University. He wrote his first line of code at the age of 19.</p>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="one_quarter">
+              <figure><img src="Danny.jpg" alt="">
+                <figcaption>
+                  <p class="team_name">Danny Yip</p>
+                  <p class="team_title">Software Engineering</p>
+                  <p class="team_description">Danny was born Penang, Malaysia. He is a 2nd year SE student at Iowa State
+                    University. He worked at Motorola over Summer 2018 as an intern.</p>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="one_quarter">
+              <figure><img src="Romain.jpg" alt="">
+                <figcaption>
+                  <p class="team_name">Romain Vianney</p>
+                  <p class="team_title">Software Engineering</p>
+                  <p class="team_description">Romain was born in Libreville, Gabon. He is a 2nd year SE student at Iowa
+                    State University. He has been coding since he was 16.</p>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="one_quarter">
+              <figure><img src="Thomas.jpg" alt="">
+                <figcaption>
+                  <p class="team_name">Thomas Chaidez</p>
+                  <p class="team_title">Software Engineering</p>
+                  <p class="team_description">Thomas is from the Chicago area in Illinois.</p>
+                  <p class="bot"></p>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!-- Script -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+
+  <script>
+    var config = {
+      apiKey: "AIzaSyAFhZoGHpYmXbQSfKQ0Dm2CM4y3bl_QODU",
+      authDomain: "hanglet-48169.firebaseapp.com",
+      databaseURL: "https://hanglet-48169.firebaseio.com",
+      projectId: "hanglet-48169",
+      storageBucket: "",
+      messagingSenderId: "363620412655"
+    };
+    firebase.initializeApp(config);
+    //make auth and firestore references
+    const auth = firebase.auth();
+
+  </script>
+  <!--Other Script  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+  <script src="./singleplayer.js"></script>
+
+
+  <div class="navbar">
+    <a href="homepage.html">Homepage</a>
+    <a href="singleplayer.html">SinglePlayer</a>
+    <a href="getPlayersWords.html">Multiplayer</a>
+    <a href="highscore.html">High Score</a>
+    <a href="author.html" class="active">About us</a>
+    <a onclick="logout()">Logout</a>
+
+  </div>
+
+</body>
+
+</html>

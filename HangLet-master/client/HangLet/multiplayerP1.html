@@ -1,0 +1,102 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="mycss.css">
+
+</head>
+
+<body>
+<div id = "center">
+
+<h1> Multiplayer P1 turns </h1>
+
+
+
+<button onclick="p1GuessWords()">Display p2word(Start) </button>
+
+<p id = "p2WordsGenerated"></p>
+<p id = "output"></p>
+
+
+
+
+
+<button id = "buttonA" style="width: 30px; height: 20px;" onclick="a()">a </button>
+<button id = "buttonB" style="width: 30px; height: 20px;" onclick="b()">b </button>
+<button id = "buttonC" style="width: 30px; height: 20px;" onclick="c()">c </button>
+<button id = "buttonD" style="width: 30px; height: 20px;" onclick="d()">d </button>
+<button id = "buttonE" style="width: 30px; height: 20px;" onclick="e()">e </button>
+<button id = "buttonF" style="width: 30px; height: 20px;" onclick="f()">f </button>
+<button id = "buttonG" style="width: 30px; height: 20px;" onclick="g()">g </button>
+<button id = "buttonH" style="width: 30px; height: 20px;" onclick="h()">h </button>
+<button id = "buttonI" style="width: 30px; height: 20px;" onclick="i()">i </button>
+<button id = "buttonJ" style="width: 30px; height: 20px;" onclick="j()">j </button>
+
+<br></br>
+
+<button id = "buttonK" style="width: 30px; height: 20px;" onclick="k()">k </button>
+<button id = "buttonL" style="width: 30px; height: 20px;" onclick="l()">l </button>
+<button id = "buttonM" style="width: 30px; height: 20px;" onclick="m()">m </button>
+<button id = "buttonN" style="width: 30px; height: 20px;" onclick="n()">n </button>
+<button id = "buttonO" style="width: 30px; height: 20px;" onclick="o()">o </button>
+<button id = "buttonP" style="width: 30px; height: 20px;" onclick="p()">p </button>
+<button id = "buttonQ" style="width: 30px; height: 20px;" onclick="q()">q </button>
+<button id = "buttonR" style="width: 30px; height: 20px;" onclick="r()">r </button>
+<button id = "buttonSS" style="width: 30px; height: 20px;" onclick="s()">s </button>
+
+<br></br>
+&ensp;
+<button id = "buttonT" style="width: 30px; height: 20px;" onclick="t()">t </button>
+<button id = "buttonU" style="width: 30px; height: 20px;" onclick="u()">u </button>
+<button id = "buttonV" style="width: 30px; height: 20px;" onclick="v()">v </button>
+<button id = "buttonW" style="width: 30px; height: 20px;" onclick="w()">w </button>
+<button id = "buttonX" style="width: 30px; height: 20px;" onclick="x()">x </button>
+<button id = "buttonY" style="width: 30px; height: 20px;" onclick="y()">y </button>
+<button id = "buttonZ" style="width: 30px; height: 20px;" onclick="z()">z </button>
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+
+<button onclick="p1Completed()">P1 Completed </button>
+
+</div>
+<!-- Script -->
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script> 
+
+<script>
+	var config = {
+    apiKey: "AIzaSyAFhZoGHpYmXbQSfKQ0Dm2CM4y3bl_QODU",
+    authDomain: "hanglet-48169.firebaseapp.com",
+    databaseURL: "https://hanglet-48169.firebaseio.com",
+    projectId: "hanglet-48169",
+    storageBucket: "",
+    messagingSenderId: "363620412655"
+  };
+  firebase.initializeApp(config);
+  //make auth and firestore references
+  const auth = firebase.auth();
+  
+</script>
+<!--Other Script  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./multiplayerP1.js"></script> 
+
+
+<div class="navbar">
+  <a href="homepage.html">Homepage</a>
+  <a href="singleplayer.html" >SinglePlayer</a>
+  <a href="getPlayersWords.html" class="active" >Multiplayer</a>
+  <a href="highscore.html">High Score</a>
+  <a href="author.html">About us</a>
+  <a onclick="logout()">Logout</a>
+
+
+</div>
+
+
+
+</body>
+</html>
